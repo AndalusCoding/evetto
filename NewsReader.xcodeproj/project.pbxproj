@@ -13,6 +13,19 @@
 		F4E35D3D29771B5F00D4D3E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D3B29771B5F00D4D3E5 /* Main.storyboard */; };
 		F4E35D3F29771B6000D4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D3E29771B6000D4D3E5 /* Assets.xcassets */; };
 		F4E35D4229771B6000D4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D4029771B6000D4D3E5 /* LaunchScreen.storyboard */; };
+		F4E35D5029771C1D00D4D3E5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D4F29771C1D00D4D3E5 /* RxCocoa */; };
+		F4E35D5229771C1D00D4D3E5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D5129771C1D00D4D3E5 /* RxRelay */; };
+		F4E35D5429771C1D00D4D3E5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D5329771C1D00D4D3E5 /* RxSwift */; };
+		F4E35D5729771C7500D4D3E5 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D5629771C7500D4D3E5 /* NewsService.swift */; };
+		F4E35D5A29771D7400D4D3E5 /* TopStoryHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D5929771D7400D4D3E5 /* TopStoryHeadline.swift */; };
+		F4E35D5D29771EA200D4D3E5 /* HeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D5C29771EA200D4D3E5 /* HeadlinesViewController.swift */; };
+		F4E35D5F29771EBB00D4D3E5 /* HeadlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D5E29771EBB00D4D3E5 /* HeadlinesViewModel.swift */; };
+		F4E35D612977212800D4D3E5 /* HeadlinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D602977212800D4D3E5 /* HeadlinesViewController.xib */; };
+		F4E35D652977218200D4D3E5 /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D632977218200D4D3E5 /* HeadlineCell.swift */; };
+		F4E35D662977218200D4D3E5 /* HeadlineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D642977218200D4D3E5 /* HeadlineCell.xib */; };
+		F4E35D692977243300D4D3E5 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D682977243300D4D3E5 /* Differentiator */; };
+		F4E35D6B2977243300D4D3E5 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6A2977243300D4D3E5 /* RxDataSources */; };
+		F4E35D6E2977292C00D4D3E5 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6D2977292C00D4D3E5 /* Fakery */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +37,13 @@
 		F4E35D3E29771B6000D4D3E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4E35D4129771B6000D4D3E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4E35D4329771B6000D4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4E35D5629771C7500D4D3E5 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		F4E35D5929771D7400D4D3E5 /* TopStoryHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryHeadline.swift; sourceTree = "<group>"; };
+		F4E35D5C29771EA200D4D3E5 /* HeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesViewController.swift; sourceTree = "<group>"; };
+		F4E35D5E29771EBB00D4D3E5 /* HeadlinesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesViewModel.swift; sourceTree = "<group>"; };
+		F4E35D602977212800D4D3E5 /* HeadlinesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadlinesViewController.xib; sourceTree = "<group>"; };
+		F4E35D632977218200D4D3E5 /* HeadlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
+		F4E35D642977218200D4D3E5 /* HeadlineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadlineCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E35D692977243300D4D3E5 /* Differentiator in Frameworks */,
+				F4E35D5429771C1D00D4D3E5 /* RxSwift in Frameworks */,
+				F4E35D6E2977292C00D4D3E5 /* Fakery in Frameworks */,
+				F4E35D5229771C1D00D4D3E5 /* RxRelay in Frameworks */,
+				F4E35D6B2977243300D4D3E5 /* RxDataSources in Frameworks */,
+				F4E35D5029771C1D00D4D3E5 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,12 +85,91 @@
 				F4E35D3529771B5F00D4D3E5 /* AppDelegate.swift */,
 				F4E35D3729771B5F00D4D3E5 /* SceneDelegate.swift */,
 				F4E35D3929771B5F00D4D3E5 /* ViewController.swift */,
-				F4E35D3B29771B5F00D4D3E5 /* Main.storyboard */,
-				F4E35D3E29771B6000D4D3E5 /* Assets.xcassets */,
-				F4E35D4029771B6000D4D3E5 /* LaunchScreen.storyboard */,
+				F4E35D5829771CE200D4D3E5 /* Entities */,
+				F4E35D4C29771BB700D4D3E5 /* Helpers */,
+				F4E35D4B29771BB400D4D3E5 /* Extensions */,
+				F4E35D4A29771BA600D4D3E5 /* Scenes */,
+				F4E35D4929771B9300D4D3E5 /* Services */,
+				F4E35D4D29771BC100D4D3E5 /* Resources */,
 				F4E35D4329771B6000D4D3E5 /* Info.plist */,
 			);
 			path = NewsReader;
+			sourceTree = "<group>";
+		};
+		F4E35D4929771B9300D4D3E5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D5529771C6A00D4D3E5 /* News */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F4E35D4A29771BA600D4D3E5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D5B29771E8500D4D3E5 /* Headlines View */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F4E35D4B29771BB400D4D3E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4E35D4C29771BB700D4D3E5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F4E35D4D29771BC100D4D3E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D3B29771B5F00D4D3E5 /* Main.storyboard */,
+				F4E35D3E29771B6000D4D3E5 /* Assets.xcassets */,
+				F4E35D4029771B6000D4D3E5 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F4E35D5529771C6A00D4D3E5 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D5629771C7500D4D3E5 /* NewsService.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		F4E35D5829771CE200D4D3E5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D5929771D7400D4D3E5 /* TopStoryHeadline.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		F4E35D5B29771E8500D4D3E5 /* Headlines View */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D622977216800D4D3E5 /* Views */,
+				F4E35D602977212800D4D3E5 /* HeadlinesViewController.xib */,
+				F4E35D5C29771EA200D4D3E5 /* HeadlinesViewController.swift */,
+				F4E35D5E29771EBB00D4D3E5 /* HeadlinesViewModel.swift */,
+			);
+			path = "Headlines View";
+			sourceTree = "<group>";
+		};
+		F4E35D622977216800D4D3E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4E35D632977218200D4D3E5 /* HeadlineCell.swift */,
+				F4E35D642977218200D4D3E5 /* HeadlineCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +188,14 @@
 			dependencies = (
 			);
 			name = NewsReader;
+			packageProductDependencies = (
+				F4E35D4F29771C1D00D4D3E5 /* RxCocoa */,
+				F4E35D5129771C1D00D4D3E5 /* RxRelay */,
+				F4E35D5329771C1D00D4D3E5 /* RxSwift */,
+				F4E35D682977243300D4D3E5 /* Differentiator */,
+				F4E35D6A2977243300D4D3E5 /* RxDataSources */,
+				F4E35D6D2977292C00D4D3E5 /* Fakery */,
+			);
 			productName = NewsReader;
 			productReference = F4E35D3229771B5F00D4D3E5 /* NewsReader.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +224,11 @@
 				Base,
 			);
 			mainGroup = F4E35D2929771B5F00D4D3E5;
+			packageReferences = (
+				F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				F4E35D672977243300D4D3E5 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				F4E35D6C2977292B00D4D3E5 /* XCRemoteSwiftPackageReference "Fakery" */,
+			);
 			productRefGroup = F4E35D3329771B5F00D4D3E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,6 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E35D612977212800D4D3E5 /* HeadlinesViewController.xib in Resources */,
+				F4E35D662977218200D4D3E5 /* HeadlineCell.xib in Resources */,
 				F4E35D4229771B6000D4D3E5 /* LaunchScreen.storyboard in Resources */,
 				F4E35D3F29771B6000D4D3E5 /* Assets.xcassets in Resources */,
 				F4E35D3D29771B5F00D4D3E5 /* Main.storyboard in Resources */,
@@ -138,9 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E35D5A29771D7400D4D3E5 /* TopStoryHeadline.swift in Sources */,
 				F4E35D3A29771B5F00D4D3E5 /* ViewController.swift in Sources */,
+				F4E35D5D29771EA200D4D3E5 /* HeadlinesViewController.swift in Sources */,
 				F4E35D3629771B5F00D4D3E5 /* AppDelegate.swift in Sources */,
+				F4E35D5729771C7500D4D3E5 /* NewsService.swift in Sources */,
+				F4E35D5F29771EBB00D4D3E5 /* HeadlinesViewModel.swift in Sources */,
 				F4E35D3829771B5F00D4D3E5 /* SceneDelegate.swift in Sources */,
+				F4E35D652977218200D4D3E5 /* HeadlineCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +481,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		F4E35D672977243300D4D3E5 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F4E35D6C2977292B00D4D3E5 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4E35D4F29771C1D00D4D3E5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F4E35D5129771C1D00D4D3E5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		F4E35D5329771C1D00D4D3E5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		F4E35D682977243300D4D3E5 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D672977243300D4D3E5 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		F4E35D6A2977243300D4D3E5 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D672977243300D4D3E5 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		F4E35D6D2977292C00D4D3E5 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D6C2977292B00D4D3E5 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4E35D2A29771B5F00D4D3E5 /* Project object */;
 }
