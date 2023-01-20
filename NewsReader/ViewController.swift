@@ -9,9 +9,9 @@ final class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let service = NewsService()
-        let viewModel = HeadlinesViewModel(service: service)
-        let viewController = HeadlinesViewController(viewModel: viewModel)
+        let service = AdsService()
+        let viewModel = AdsListViewModel(service: service)
+        let viewController = AdsListViewController(viewModel: viewModel)
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false)
     }
