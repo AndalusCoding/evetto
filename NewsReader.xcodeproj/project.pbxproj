@@ -27,6 +27,7 @@
 		F4E35D692977243300D4D3E5 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D682977243300D4D3E5 /* Differentiator */; };
 		F4E35D6B2977243300D4D3E5 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6A2977243300D4D3E5 /* RxDataSources */; };
 		F4E35D6E2977292C00D4D3E5 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6D2977292C00D4D3E5 /* Fakery */; };
+		F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECA83A297C6A3000A26125 /* DependencyContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		F4E35D602977212800D4D3E5 /* AdsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsListViewController.xib; sourceTree = "<group>"; };
 		F4E35D632977218200D4D3E5 /* AdsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListCell.swift; sourceTree = "<group>"; };
 		F4E35D642977218200D4D3E5 /* AdsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsListCell.xib; sourceTree = "<group>"; };
+		F4ECA83A297C6A3000A26125 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				F4E35D3529771B5F00D4D3E5 /* AppDelegate.swift */,
 				F4E35D3729771B5F00D4D3E5 /* SceneDelegate.swift */,
 				F4E35D3929771B5F00D4D3E5 /* ViewController.swift */,
+				F4ECA83A297C6A3000A26125 /* DependencyContainer.swift */,
 				F4E35D5829771CE200D4D3E5 /* Entities */,
 				F4E35D4C29771BB700D4D3E5 /* Helpers */,
 				F4E35D4B29771BB400D4D3E5 /* Extensions */,
@@ -283,6 +286,7 @@
 				F4E35D3629771B5F00D4D3E5 /* AppDelegate.swift in Sources */,
 				F4E00F9A2979B943003F5E07 /* ActivityIndicatorCell.swift in Sources */,
 				F4E00F962979B837003F5E07 /* AdsService.swift in Sources */,
+				F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */,
 				F4E35D5F29771EBB00D4D3E5 /* AdsListViewModel.swift in Sources */,
 				F4E35D3829771B5F00D4D3E5 /* SceneDelegate.swift in Sources */,
 				F4E35D652977218200D4D3E5 /* AdsListCell.swift in Sources */,
