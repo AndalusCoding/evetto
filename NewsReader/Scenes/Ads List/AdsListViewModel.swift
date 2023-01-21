@@ -33,24 +33,38 @@ final class AdsListViewModel {
     }
     
     let ads: Driver<[AdsSection]>
-    let nextPageLoadingTrigger = PublishRelay<Void>()
+    let nextPageTrigger = PublishRelay<Void>()
+    let reloadingTrigger = PublishRelay<Void>()
     
     private let service: AdsServiceType
     
     init(
-        service: AdsServiceType
+        service: AdsServiceType = appContext.adsService
     ) {
         self.service = service
+        ads = AdsListViewModel.createAdsLoader(
+            service: service,
+            nextPageTrigger: nextPageTrigger.asObservable(),
+            reloadTrigger: reloadingTrigger.asObservable()
+        )
+    }
+    
+    static func createAdsLoader(
+        service: AdsServiceType,
+        nextPageTrigger: Observable<Void>,
+        reloadTrigger: Observable<Void>
+    ) -> Driver<[AdsSection]> {
+        var page = 0
         
-        var page = 1
-        
-        ads = nextPageLoadingTrigger
+        return Observable
+            .merge(
+                nextPageTrigger.do(onNext: { page += 1 }),
+                reloadTrigger.do(onNext: { page = 1 })
+            )
             .flatMap { () -> Single<[Ad]> in
                 service.getAdsList(page: page, limit: PAGE_LIMIT)
             }
-            .do(onNext: { _ in
-                page += 1
-            })
+            .startWith([])
             .map { ads -> [AdsSection] in
                 return [
                     AdsSection(
@@ -60,8 +74,15 @@ final class AdsListViewModel {
                 ]
             }
             .asDriver(onErrorJustReturn: [])
-            .startWith([AdsSection(identity: UUID().uuidString, items: [.activityIndicator])])
-            .scan([], accumulator: +)
+            .scan([], accumulator: { old, new in
+                let data: [AdsSection]
+                if page == 1 {
+                    data = new
+                } else {
+                    data = old.dropLast() + new
+                }
+                return data + [AdsSection(identity: UUID().uuidString, items: [.activityIndicator])]
+            })
     }
     
 }

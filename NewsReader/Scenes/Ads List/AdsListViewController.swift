@@ -17,22 +17,28 @@ final class AdsListViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     
-    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AdsSection> { (dataSource, tableView: UITableView, indexPath, item) in
-        switch item {
-            
-        case .activityIndicator:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ActivityIndicatorCell.id) as! ActivityIndicatorCell
-            cell.startAnimating()
-            return cell
-            
-        case .ad(let ad):
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.adCell) as! AdsListCell
-            cell.configure(with: ad)
-            return cell
-            
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AdsSection>(
+        animationConfiguration: AnimationConfiguration(
+            insertAnimation: .fade,
+            reloadAnimation: .fade,
+            deleteAnimation: .fade
+        ),
+        configureCell: { (dataSource, tableView: UITableView, indexPath, item) in
+            switch item {
+                
+            case .activityIndicator:
+                let cell = tableView.dequeueReusableCell(withIdentifier: ActivityIndicatorCell.id) as! ActivityIndicatorCell
+                cell.startAnimating()
+                return cell
+                
+            case .ad(let ad):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.adCell) as! AdsListCell
+                cell.configure(with: ad)
+                return cell
+                
+            }
         }
-        
-    }
+    )
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -61,6 +67,14 @@ private extension AdsListViewController {
         tableView.register(nib, forCellReuseIdentifier: Constants.adCell)
         tableView.register(ActivityIndicatorCell.self, forCellReuseIdentifier: ActivityIndicatorCell.id)
         
+        let refreshConrol = UIRefreshControl()
+        tableView.refreshControl = refreshConrol
+        refreshConrol
+            .rx
+            .controlEvent(.valueChanged)
+            .bind(to: viewModel.reloadingTrigger)
+            .disposed(by: disposeBag)
+        
         tableView
             .rx
             .contentOffset
@@ -72,7 +86,7 @@ private extension AdsListViewController {
             }
             .throttle(.seconds(3), latest: true, scheduler: MainScheduler.instance)
             .map { _ in }
-            .bind(to: viewModel.nextPageLoadingTrigger)
+            .bind(to: viewModel.nextPageTrigger)
             .disposed(by: disposeBag)
         
         tableView.rx
@@ -84,6 +98,9 @@ private extension AdsListViewController {
         
         viewModel
             .ads
+            .do(onNext: { _ in
+                refreshConrol.endRefreshing()
+            })
             .drive(
                 tableView.rx.items(dataSource: dataSource)
             )
