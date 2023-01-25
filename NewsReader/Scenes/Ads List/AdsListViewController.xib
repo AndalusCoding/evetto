@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdsListViewController" customModule="NewsReader" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="Vdg-2d-tcA" id="5sC-ry-T35"/>
+                <outlet property="collectionView" destination="vCA-jY-pQq" id="dcK-fq-WwA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="abt-cR-00E"/>
             </connections>
         </placeholder>
@@ -19,25 +19,30 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vdg-2d-tcA">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vCA-jY-pQq">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nmb-Aj-C1c">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Vdg-2d-tcA" secondAttribute="bottom" id="3lr-hE-Vye"/>
-                <constraint firstItem="Vdg-2d-tcA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LpH-fZ-wgd"/>
-                <constraint firstItem="Vdg-2d-tcA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="d3h-hA-PIp"/>
-                <constraint firstItem="Vdg-2d-tcA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="vNi-Ys-DEc"/>
+                <constraint firstItem="vCA-jY-pQq" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Fe0-ab-rIT"/>
+                <constraint firstAttribute="bottom" secondItem="vCA-jY-pQq" secondAttribute="bottom" id="s3l-kb-D4A"/>
+                <constraint firstItem="vCA-jY-pQq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vsX-YZ-oJq"/>
+                <constraint firstItem="vCA-jY-pQq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vv5-Vi-hCs"/>
             </constraints>
             <point key="canvasLocation" x="110.68702290076335" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

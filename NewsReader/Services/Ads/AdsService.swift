@@ -23,11 +23,14 @@ final class AdsService: AdsServiceType {
             let data: [Ad]
         }
         
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
         return URLSession.shared
             .rx
             .data(request: request)
             .map { data in
-                try! JSONDecoder().decode(Response.self, from: data)
+                try! decoder.decode(Response.self, from: data)
             }
             .map(\.data)
             .asSingle()

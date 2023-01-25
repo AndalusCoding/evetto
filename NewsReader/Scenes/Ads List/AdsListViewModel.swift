@@ -21,9 +21,8 @@ final class AdsListViewModel {
     
     enum AdListItem: IdentifiableType, Equatable {
         case activityIndicator
-        case ad(Ad)
+        case ad(AdsListItemViewModel)
 
-        
         var identity: String {
             switch self {
             case .activityIndicator: return "activityIndicator"
@@ -56,6 +55,13 @@ final class AdsListViewModel {
     ) -> Driver<[AdsSection]> {
         var page = 0
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd MMMM y, HH:mm")
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumFractionDigits = 0
+        numberFormatter.maximumFractionDigits = 2
+        
         return Observable
             .merge(
                 nextPageTrigger.do(onNext: { page += 1 }),
@@ -69,7 +75,13 @@ final class AdsListViewModel {
                 return [
                     AdsSection(
                         identity: UUID().uuidString,
-                        items: ads.map(AdListItem.ad)
+                        items: ads.map { ad in
+                            AdListItem.ad(AdsListItemViewModel(
+                                ad: ad,
+                                formatDate: dateFormatter.string,
+                                formatPrice: numberFormatter.string
+                            ))
+                        }
                     )
                 ]
             }

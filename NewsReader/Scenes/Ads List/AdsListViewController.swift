@@ -5,11 +5,13 @@ import RxDataSources
 
 private enum Constants {
     static let adCell = "AdsListCell"
+    static let sideInset: CGFloat = 16
+    static let itemsPadding: CGFloat = 16
 }
 
 final class AdsListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
         
     typealias ViewModel = AdsListViewModel
     
@@ -17,22 +19,17 @@ final class AdsListViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     
-    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AdsSection>(
-        animationConfiguration: AnimationConfiguration(
-            insertAnimation: .fade,
-            reloadAnimation: .fade,
-            deleteAnimation: .fade
-        ),
-        configureCell: { (dataSource, tableView: UITableView, indexPath, item) in
+    private lazy var dataSource = RxCollectionViewSectionedAnimatedDataSource<AdsSection>(
+        configureCell: { (dataSource, collectionView: UICollectionView, indexPath, item) in
             switch item {
                 
             case .activityIndicator:
-                let cell = tableView.dequeueReusableCell(withIdentifier: ActivityIndicatorCell.id) as! ActivityIndicatorCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityIndicatorCell.id, for: indexPath) as! ActivityIndicatorCell
                 cell.startAnimating()
                 return cell
                 
             case .ad(let ad):
-                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.adCell) as! AdsListCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.adCell, for: indexPath) as! AdsListCell
                 cell.configure(with: ad)
                 return cell
                 
@@ -59,29 +56,45 @@ final class AdsListViewController: UIViewController {
 private extension AdsListViewController {
     
     func configureViews() {
-        configureTableView()
+        configureCollectionView()
     }
     
-    func configureTableView() {
+    func configureCollectionView() {
+
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(
+            top: Constants.itemsPadding/2,
+            left: Constants.sideInset,
+            bottom: Constants.itemsPadding/2,
+            right: Constants.sideInset
+        )
+        flowLayout.minimumLineSpacing = Constants.itemsPadding
+        flowLayout.minimumInteritemSpacing = Constants.itemsPadding
+        collectionView.setCollectionViewLayout(flowLayout, animated: false)
+        
+        collectionView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+        
         let nib = UINib(nibName: Constants.adCell, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: Constants.adCell)
-        tableView.register(ActivityIndicatorCell.self, forCellReuseIdentifier: ActivityIndicatorCell.id)
+        collectionView.register(nib, forCellWithReuseIdentifier: Constants.adCell)
+        collectionView.register(ActivityIndicatorCell.self, forCellWithReuseIdentifier: ActivityIndicatorCell.id)
         
         let refreshConrol = UIRefreshControl()
-        tableView.refreshControl = refreshConrol
+        collectionView.refreshControl = refreshConrol
         refreshConrol
             .rx
             .controlEvent(.valueChanged)
             .bind(to: viewModel.reloadingTrigger)
             .disposed(by: disposeBag)
         
-        tableView
+        collectionView
             .rx
             .contentOffset
             .map(\.y)
             .filter { [unowned self] y in
-                let height = tableView.frame.size.height
-                let distanceFromBottom = tableView.contentSize.height - y
+                let height = collectionView.frame.size.height
+                let distanceFromBottom = collectionView.contentSize.height - y
                 return distanceFromBottom < height
             }
             .throttle(.seconds(3), latest: true, scheduler: MainScheduler.instance)
@@ -89,10 +102,10 @@ private extension AdsListViewController {
             .bind(to: viewModel.nextPageTrigger)
             .disposed(by: disposeBag)
         
-        tableView.rx
+        collectionView.rx
             .itemSelected
             .subscribe(onNext: { [unowned self] ip in
-                tableView.deselectRow(at: ip, animated: true)
+                collectionView.deselectItem(at: ip, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -102,9 +115,31 @@ private extension AdsListViewController {
                 refreshConrol.endRefreshing()
             })
             .drive(
-                tableView.rx.items(dataSource: dataSource)
+                collectionView.rx.items(dataSource: dataSource)
             )
             .disposed(by: disposeBag)
+    }
+    
+}
+
+extension AdsListViewController: UICollectionViewDelegateFlowLayout {
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let type = dataSource[indexPath.section].items[indexPath.item]
+        
+        switch type {
+            
+        case .activityIndicator:
+            return CGSize(width: collectionView.bounds.width, height: 100)
+            
+        case .ad:
+            return CGSize(
+                width: (collectionView.bounds.width - Constants.sideInset * 2 - Constants.itemsPadding) / 2,
+                height: 400
+            )
+            
+        }
+        
     }
     
 }

@@ -26,7 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 service: try dependencyContainer.getAdsService()
             )
             let viewController = AdsListViewController(viewModel: viewModel)
-            window.rootViewController = viewController
+            viewController.title = "Evetto"
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.prefersLargeTitles = true
+            window.rootViewController = navigationController
         } catch {
             let viewController = UIViewController()
             viewController.view.backgroundColor = .red

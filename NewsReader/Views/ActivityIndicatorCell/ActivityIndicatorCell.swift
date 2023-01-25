@@ -1,6 +1,6 @@
 import UIKit
 
-final class ActivityIndicatorCell: UITableViewCell {
+final class ActivityIndicatorCell: UICollectionViewCell {
     
     static let id = "ActivityIndicatorCell"
     
