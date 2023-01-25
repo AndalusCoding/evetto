@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F4E00F962979B837003F5E07 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E00F952979B837003F5E07 /* AdsService.swift */; };
 		F4E00F9A2979B943003F5E07 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E00F992979B943003F5E07 /* ActivityIndicatorCell.swift */; };
+		F4E2D2B7298069BC00F992AC /* AdsListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2D2B6298069BC00F992AC /* AdsListItemViewModel.swift */; };
+		F4E2D2BB29806E8F00F992AC /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F4E2D2BA29806E8F00F992AC /* Nuke */; };
+		F4E2D2BE29806F4200F992AC /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = F4E2D2BD29806F4200F992AC /* NukeUI */; };
 		F4E35D3629771B5F00D4D3E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D3529771B5F00D4D3E5 /* AppDelegate.swift */; };
 		F4E35D3829771B5F00D4D3E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E35D3729771B5F00D4D3E5 /* SceneDelegate.swift */; };
 		F4E35D3F29771B6000D4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E35D3E29771B6000D4D3E5 /* Assets.xcassets */; };
@@ -31,6 +34,8 @@
 /* Begin PBXFileReference section */
 		F4E00F952979B837003F5E07 /* AdsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		F4E00F992979B943003F5E07 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
+		F4E2D2B6298069BC00F992AC /* AdsListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListItemViewModel.swift; sourceTree = "<group>"; };
+		F4E2D2B829806BDC00F992AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F4E35D3229771B5F00D4D3E5 /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E35D3529771B5F00D4D3E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E35D3729771B5F00D4D3E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,10 +58,12 @@
 			files = (
 				F4E35D692977243300D4D3E5 /* Differentiator in Frameworks */,
 				F4E35D5429771C1D00D4D3E5 /* RxSwift in Frameworks */,
+				F4E2D2BB29806E8F00F992AC /* Nuke in Frameworks */,
 				F4E35D6E2977292C00D4D3E5 /* Fakery in Frameworks */,
 				F4E35D5229771C1D00D4D3E5 /* RxRelay in Frameworks */,
 				F4E35D6B2977243300D4D3E5 /* RxDataSources in Frameworks */,
 				F4E35D5029771C1D00D4D3E5 /* RxCocoa in Frameworks */,
+				F4E2D2BE29806F4200F992AC /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,11 +94,19 @@
 			path = ActivityIndicatorCell;
 			sourceTree = "<group>";
 		};
+		F4E2D2BC29806F4200F992AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4E35D2929771B5F00D4D3E5 = {
 			isa = PBXGroup;
 			children = (
 				F4E35D3429771B5F00D4D3E5 /* NewsReader */,
 				F4E35D3329771B5F00D4D3E5 /* Products */,
+				F4E2D2BC29806F4200F992AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +199,7 @@
 			children = (
 				F4E35D632977218200D4D3E5 /* AdsListCell.swift */,
 				F4E35D642977218200D4D3E5 /* AdsListCell.xib */,
+				F4E2D2B6298069BC00F992AC /* AdsListItemViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +227,8 @@
 				F4E35D682977243300D4D3E5 /* Differentiator */,
 				F4E35D6A2977243300D4D3E5 /* RxDataSources */,
 				F4E35D6D2977292C00D4D3E5 /* Fakery */,
+				F4E2D2BA29806E8F00F992AC /* Nuke */,
+				F4E2D2BD29806F4200F992AC /* NukeUI */,
 			);
 			productName = NewsReader;
 			productReference = F4E35D3229771B5F00D4D3E5 /* NewsReader.app */;
@@ -238,12 +256,14 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = F4E35D2929771B5F00D4D3E5;
 			packageReferences = (
 				F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				F4E35D672977243300D4D3E5 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				F4E35D6C2977292B00D4D3E5 /* XCRemoteSwiftPackageReference "Fakery" */,
+				F4E2D2B929806E8F00F992AC /* XCRemoteSwiftPackageReference "nuke" */,
 			);
 			productRefGroup = F4E35D3329771B5F00D4D3E5 /* Products */;
 			projectDirPath = "";
@@ -277,6 +297,7 @@
 				F4E35D5D29771EA200D4D3E5 /* AdsListViewController.swift in Sources */,
 				F4E35D3629771B5F00D4D3E5 /* AppDelegate.swift in Sources */,
 				F4E00F9A2979B943003F5E07 /* ActivityIndicatorCell.swift in Sources */,
+				F4E2D2B7298069BC00F992AC /* AdsListItemViewModel.swift in Sources */,
 				F4E00F962979B837003F5E07 /* AdsService.swift in Sources */,
 				F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */,
 				F4E35D5F29771EBB00D4D3E5 /* AdsListViewModel.swift in Sources */,
@@ -292,6 +313,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4E35D4129771B6000D4D3E5 /* Base */,
+				F4E2D2B829806BDC00F992AC /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -303,6 +325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -363,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -489,6 +513,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F4E2D2B929806E8F00F992AC /* XCRemoteSwiftPackageReference "nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 		F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -516,6 +548,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F4E2D2BA29806E8F00F992AC /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E2D2B929806E8F00F992AC /* XCRemoteSwiftPackageReference "nuke" */;
+			productName = Nuke;
+		};
+		F4E2D2BD29806F4200F992AC /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E2D2B929806E8F00F992AC /* XCRemoteSwiftPackageReference "nuke" */;
+			productName = NukeUI;
+		};
 		F4E35D4F29771C1D00D4D3E5 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
