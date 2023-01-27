@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
+import XCoordinator
 
 private let PAGE_LIMIT = 20
 
@@ -36,9 +37,11 @@ final class AdsListViewModel {
     let reloadingTrigger = PublishRelay<Void>()
     
     private let service: AdsServiceType
+    private let routeTrigger: AdsRouteTrigger
     
     init(
-        service: AdsServiceType = appContext.adsService
+        service: AdsServiceType = appContext.adsService,
+        routeTrigger: @escaping AdsRouteTrigger
     ) {
         self.service = service
         ads = AdsListViewModel.createAdsLoader(
@@ -46,6 +49,11 @@ final class AdsListViewModel {
             nextPageTrigger: nextPageTrigger.asObservable(),
             reloadTrigger: reloadingTrigger.asObservable()
         )
+        self.routeTrigger = routeTrigger
+    }
+    
+    func navigateToAd(with id: UUID) {
+        routeTrigger(.details(id))
     }
     
     static func createAdsLoader(

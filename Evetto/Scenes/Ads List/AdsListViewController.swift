@@ -104,8 +104,15 @@ private extension AdsListViewController {
         
         collectionView.rx
             .itemSelected
-            .subscribe(onNext: { [unowned self] ip in
+            .asDriver()
+            .drive(onNext: { [unowned self] ip in
                 collectionView.deselectItem(at: ip, animated: true)
+                
+                let item = self.dataSource[ip.section].items[ip.item]
+                guard case .ad(let ad) = item else {
+                    return
+                }
+                self.viewModel.navigateToAd(with: ad.id)
             })
             .disposed(by: disposeBag)
         

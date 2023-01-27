@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import XCoordinator
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
     private let dependencyContainer = DependencyContainer()
+    private var rootCoordinator: Presentable?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,20 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        do {
-            let viewModel = AdsListViewModel(
-                service: try dependencyContainer.getAdsService()
-            )
-            let viewController = AdsListViewController(viewModel: viewModel)
-            viewController.title = "Evetto"
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.navigationBar.prefersLargeTitles = true
-            window.rootViewController = navigationController
-        } catch {
-            let viewController = UIViewController()
-            viewController.view.backgroundColor = .red
-            window.rootViewController = viewController
-        }
+        let coordinator = MainCoordinator(
+            dependencyContainer: dependencyContainer
+        )
+        self.rootCoordinator = coordinator
+        coordinator.setRoot(for: window)
         self.window = window
         window.makeKeyAndVisible()
     }
