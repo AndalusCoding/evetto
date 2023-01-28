@@ -67,12 +67,8 @@ final class AdsListViewModel {
     ) -> Driver<[AdsSection]> {
         var page = 0
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd MMMM y, HH:mm")
-        
-        let numberFormatter = NumberFormatter()
-        numberFormatter.minimumFractionDigits = 0
-        numberFormatter.maximumFractionDigits = 2
+        let dateFormatter = DateFormatter.dayAndTimeFormatter
+        let numberFormatter = NumberFormatter.priceNumberFormatter
         
         return Observable
             .merge(
@@ -91,7 +87,7 @@ final class AdsListViewModel {
                             AdListItem.ad(AdsListItemViewModel(
                                 ad: ad,
                                 formatDate: dateFormatter.string,
-                                formatPrice: numberFormatter.string
+                                priceFormatter: numberFormatter
                             ))
                         }
                     )

@@ -142,7 +142,7 @@ extension AdsListViewController: UICollectionViewDelegateFlowLayout {
         case .ad:
             return CGSize(
                 width: (collectionView.bounds.width - Constants.sideInset * 2 - Constants.itemsPadding) / 2,
-                height: 400
+                height: 350
             )
             
         }
