@@ -112,7 +112,7 @@ private extension AdsListViewController {
                 guard case .ad(let ad) = item else {
                     return
                 }
-                self.viewModel.navigateToAd(with: ad.id)
+                self.viewModel.navigate(to: ad)
             })
             .disposed(by: disposeBag)
         

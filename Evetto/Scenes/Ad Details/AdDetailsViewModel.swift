@@ -3,25 +3,26 @@ import RxSwift
 
 final class AdDetailsViewModel: ObservableObject {
     
-    @Published var didLoadData = false
+    @Published var didLoadData = true
     @Published var imageURLs: [URL] = []
     @Published var title = ""
     @Published var location: String?
     @Published var price = ""
     @Published var category = ""
+    @Published var date = ""
     @Published var numberOfViews = ""
     @Published var descriptionText: String?
     @Published var sellerName = ""
     @Published var contacts: [Contact] = []
     
+    private let dateFormatter = DateFormatter.dayAndTimeFormatter
+    private let priceNumberFormatter = NumberFormatter.priceNumberFormatter
     private var disposeBag = DisposeBag()
     
     init(
-        adDetails: Single<Ad>
+        adDetails: Observable<Ad>
     ) {
         adDetails
-            .asObservable()
-            .startWith(.placeholder(currency: .TRY))
             .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [unowned self] ad in
@@ -41,8 +42,15 @@ final class AdDetailsViewModel: ObservableObject {
         title = ad.title
         descriptionText = ad.description
         location = ad.location?.area ?? ""
-        price = ad.price?.amount.description ?? ""
+        if let price = ad.price {
+            priceNumberFormatter.currencyCode = price.currency.rawValue
+            priceNumberFormatter.currencySymbol = price.currency.currencySymbol
+            self.price = priceNumberFormatter.string(for: price.amount) ?? "\(price.amount)"
+        } else {
+            price = "Цена не указана"
+        }
         category = ad.category?.title ?? ""
+        date = dateFormatter.string(from: ad.createdAt)
         didLoadData = ad.isPlaceholder != true
     }
     

@@ -52,8 +52,12 @@ final class AdsListViewModel {
         self.routeTrigger = routeTrigger
     }
     
-    func navigateToAd(with id: UUID) {
-        routeTrigger(.details(id))
+    func navigate(to ad: AdsListItemViewModel) {
+        routeTrigger(.details(
+            id: ad.id,
+            title: ad.title,
+            ad: ad.ad
+        ))
     }
     
     static func createAdsLoader(

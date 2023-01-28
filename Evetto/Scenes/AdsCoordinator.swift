@@ -1,14 +1,20 @@
 import UIKit
 import SwiftUI
 import XCoordinator
+import RxSwift
 
 typealias AdsRouteTrigger = (AdsRoute) -> Void
 
 enum AdsRoute: Route {
+    /// Vertical list of ads.
     case list
-    case details(UUID)
+    /// Ad details.
+    case details(id: UUID, title: String? = nil, ad: Ad? = nil)
 }
 
+/**
+ Helps to navigate through ads related screens.
+ */
 final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
     
     private let service: AdsServiceType
@@ -39,11 +45,15 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             viewController.title = "Evetto"
             return .push(viewController)
             
-        case .details(let adId):
-            let adDetails = service.getAdDetails(adId)
+        case .details(let adId, let title, let ad):
+            let adDetails = service
+                .getAdDetails(adId)
+                .asObservable()
+                .startWith(ad ?? Ad.placeholder(currency: .TRY))
             let viewModel = AdDetailsViewModel(adDetails: adDetails)
             let view = AdDetailsView(viewModel: viewModel)
             let viewController = AdDetailsViewController(rootView: view)
+            viewController.title = title
             return .push(viewController)
             
         }
