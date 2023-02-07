@@ -53,6 +53,9 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             }
             let viewModel = AdDetailsViewModel(
                 adDetails: adDetails,
+                toggleFavorite: { [service] flag in
+                    service.toggleFavoriteState(adId: adId, flag: flag)
+                },
                 routeTrigger: .init(unownedRouter: unownedRouter)
             )
             let view = AdDetailsView(viewModel: viewModel)

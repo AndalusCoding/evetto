@@ -9,6 +9,8 @@ protocol AdsServiceType {
     ) -> Single<[Ad]>
     
     func getAdDetails(_ id: UUID) -> Single<Ad>
+
+    func toggleFavoriteState(adId: UUID, flag: Bool) -> Single<Void>
 }
 
 final class AdsService: AdsServiceType {
@@ -41,9 +43,10 @@ final class AdsService: AdsServiceType {
     
     func getAdDetails(_ id: UUID) -> Single<Ad> {
         assert(Thread.isMainThread)
-        let request = URLRequest(
+        var request = URLRequest(
             url: URL(string: "https://api.evetto.app/v1/ads/\(id.uuidString)")!
         )
+        request.setValue(ProcessInfo.processInfo.environment["TOKEN"] ?? "", forHTTPHeaderField: "Authorization")
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
@@ -53,6 +56,21 @@ final class AdsService: AdsServiceType {
             .map { data in
                 try! decoder.decode(Ad.self, from: data)
             }
+            .asSingle()
+    }
+    
+    func toggleFavoriteState(
+        adId: UUID,
+        flag: Bool
+    ) -> Single<Void> {
+        let url = URL(string: "https://api.evetto.app/v1/ads/favorites/\(adId.uuidString)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = flag ? "POST" : "DELETE"
+        request.setValue(ProcessInfo.processInfo.environment["TOKEN"] ?? "", forHTTPHeaderField: "Authorization")
+        return URLSession.shared
+            .rx
+            .data(request: request)
+            .map { _ in }
             .asSingle()
     }
     

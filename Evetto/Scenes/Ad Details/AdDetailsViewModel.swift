@@ -16,16 +16,23 @@ final class AdDetailsViewModel: ObservableObject {
     @Published var sellerName = ""
     @Published var contacts: [Contact] = []
     
+    @Published private(set) var changingFavoriteState = false
+    @Published private(set) var isFavorite = false
+    
     private let dateFormatter = DateFormatter.dayAndTimeFormatter
     private let priceNumberFormatter = NumberFormatter.priceNumberFormatter
     private var disposeBag = DisposeBag()
+    
+    private let toggleFavorite: (Bool) -> Single<Void>
     private let routeTrigger: RouteTrigger<AdsRoute>
     
     init(
         adDetails: Observable<Ad>,
+        toggleFavorite: @escaping (Bool) -> Single<Void>,
         routeTrigger: RouteTrigger<AdsRoute>
     ) {
         self.routeTrigger = routeTrigger
+        self.toggleFavorite = toggleFavorite
         adDetails
             .observe(on: MainScheduler.instance)
             .subscribe(
@@ -58,15 +65,29 @@ final class AdDetailsViewModel: ObservableObject {
         date = dateFormatter.string(from: ad.createdAt)
         contacts = ad.contacts ?? []
         didLoadData = true
+        isFavorite = ad.isFavorite ?? false
     }
     
     func contactSeller(_ contact: Contact) {
         routeTrigger.trigger(.contact(contact))
     }
     
+    func toggleFavoriteState() {
+        changingFavoriteState = true
+        let newFlag = !isFavorite
+        toggleFavorite(newFlag)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in
+                self.isFavorite = newFlag
+                self.changingFavoriteState = false
+            })
+            .disposed(by: disposeBag)
+    }
+    
     static var placeholder: AdDetailsViewModel {
         AdDetailsViewModel(
             adDetails: .just(.placeholder(currency: .TRY)),
+            toggleFavorite: { _ in Single.just(()).delay(.seconds(3), scheduler: MainScheduler.instance) },
             routeTrigger: .empty
         )
     }

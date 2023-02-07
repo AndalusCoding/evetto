@@ -10,9 +10,13 @@ struct AdDetailsView: View {
         ZStack {
             ScrollView {
                 content
-                    .navigationTitle("Ad")
                     .toolbar {
-                        ToolbarItemGroup {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            Button(action: viewModel.toggleFavoriteState) {
+                                Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                            }
+                            .displayLoadingOverlay(viewModel.changingFavoriteState)
+                            
                             ShareLink(
                                 item: viewModel.shareURL
                             ) {
