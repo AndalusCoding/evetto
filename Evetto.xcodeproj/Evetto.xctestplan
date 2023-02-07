@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "15129F77-A573-4D84-A963-C0CD72EFC4F6",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Evetto.xcodeproj",
+      "identifier" : "F4E35D3129771B5F00D4D3E5",
+      "name" : "Evetto"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Evetto.xcodeproj",
+        "identifier" : "F4C2971C298C3196008EE1EC",
+        "name" : "EvettoTests"
+      }
+    }
+  ],
+  "version" : 1
+}
