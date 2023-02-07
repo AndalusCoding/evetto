@@ -51,7 +51,11 @@ final class AdDetailsViewModel: ObservableObject {
         }
         category = ad.category?.title ?? ""
         date = dateFormatter.string(from: ad.createdAt)
-        didLoadData = ad.isPlaceholder != true
+        contacts = ad.contacts ?? []
+        didLoadData = true
+    }
+    
+    func contactSeller(_ contact: Contact) {
     }
     
     static var placeholder: AdDetailsViewModel {

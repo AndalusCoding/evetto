@@ -4,11 +4,40 @@ import NukeUI
 struct AdDetailsView: View {
     
     @ObservedObject var viewModel: AdDetailsViewModel
+    @State var presentContactsList = false
     
     var body: some View {
-        ScrollView {
-            content
-                .redacted(reason: viewModel.didLoadData ? [] : .placeholder)
+        ZStack {
+            ScrollView {
+                content
+                    .navigationTitle("Ad")
+                    .toolbar {
+                        ToolbarItemGroup {
+                            ShareLink(
+                                item: viewModel.shareURL
+                            ) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                        }
+                    }
+                    .redacted(reason: viewModel.didLoadData ? [] : .placeholder)
+                    .allowsHitTesting(viewModel.didLoadData)
+            }
+            
+            if presentContactsList {
+                SellerContactsView(
+                    contacts: viewModel.contacts,
+                    selectionCallback: { contact in
+                        presentContactsList.toggle()
+                        viewModel.contactSeller(contact)
+                    },
+                    closeCallback: {
+                        presentContactsList.toggle()
+                    }
+                )
+                .animation(.easeInOut, value: UUID())
+                .transition(.opacity)
+            }
         }
     }
     
@@ -26,10 +55,14 @@ struct AdDetailsView: View {
                 descriptionText(text)
             }
             
-            Button("Связаться", action: {})
-                .buttonStyle(.primaryAction)
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
+            Button("Связаться") {
+                withAnimation {
+                    presentContactsList.toggle()
+                }
+            }
+            .buttonStyle(.primaryAction)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
         }
     }
     
@@ -93,7 +126,7 @@ struct AdDetailsView: View {
             Text(viewModel.price)
                 .foregroundColor(Color.white)
                 .padding(6)
-                .background(Color.blue)
+                .background(Color.accentColor)
                 .clipShape(Capsule())
         }
         .padding()
@@ -122,8 +155,10 @@ struct AdDetailsView: View {
 
 struct AdDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdDetailsView(
-            viewModel: .placeholder
-        )
+        NavigationView {
+            AdDetailsView(
+                viewModel: .placeholder
+            )
+        }
     }
 }
