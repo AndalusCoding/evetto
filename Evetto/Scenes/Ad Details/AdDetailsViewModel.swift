@@ -18,10 +18,13 @@ final class AdDetailsViewModel: ObservableObject {
     private let dateFormatter = DateFormatter.dayAndTimeFormatter
     private let priceNumberFormatter = NumberFormatter.priceNumberFormatter
     private var disposeBag = DisposeBag()
+    private let routeTrigger: RouteTrigger<AdsRoute>
     
     init(
-        adDetails: Observable<Ad>
+        adDetails: Observable<Ad>,
+        routeTrigger: RouteTrigger<AdsRoute>
     ) {
+        self.routeTrigger = routeTrigger
         adDetails
             .observe(on: MainScheduler.instance)
             .subscribe(
@@ -56,11 +59,13 @@ final class AdDetailsViewModel: ObservableObject {
     }
     
     func contactSeller(_ contact: Contact) {
+        routeTrigger.trigger(.contact(contact))
     }
     
     static var placeholder: AdDetailsViewModel {
         AdDetailsViewModel(
-            adDetails: .just(.placeholder(currency: .TRY))
+            adDetails: .just(.placeholder(currency: .TRY)),
+            routeTrigger: .empty
         )
     }
     

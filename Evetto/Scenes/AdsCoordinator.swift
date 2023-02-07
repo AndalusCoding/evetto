@@ -3,8 +3,6 @@ import SwiftUI
 import XCoordinator
 import RxSwift
 
-typealias AdsRouteTrigger = (AdsRoute) -> Void
-
 enum AdsRoute: Route {
     /// Vertical list of ads.
     case list
@@ -37,20 +35,24 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
         case .list:
             let viewModel = AdsListViewModel(
                 service: service,
-                routeTrigger: { [unowned self] route in
-                    self.trigger(route)
-                }
+                routeTrigger: .init(unownedRouter: unownedRouter)
             )
             let viewController = AdsListViewController(viewModel: viewModel)
             viewController.title = "Evetto"
             return .push(viewController)
             
         case .details(let adId, let title, let ad):
-            let adDetails = service
-                .getAdDetails(adId)
-                .asObservable()
-                .startWith(ad ?? Ad.placeholder(currency: .TRY))
-            let viewModel = AdDetailsViewModel(adDetails: adDetails)
+            let getAdDetailsObservable = service.getAdDetails(adId).asObservable()
+            let adDetails: Observable<Ad>
+            if let ad {
+                adDetails = getAdDetailsObservable.startWith(ad)
+            } else {
+                adDetails = getAdDetailsObservable
+            }
+            let viewModel = AdDetailsViewModel(
+                adDetails: adDetails,
+                routeTrigger: .init(unownedRouter: unownedRouter)
+            )
             let view = AdDetailsView(viewModel: viewModel)
             let viewController = AdDetailsViewController(rootView: view)
             viewController.title = title

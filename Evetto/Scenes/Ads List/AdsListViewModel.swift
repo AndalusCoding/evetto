@@ -37,11 +37,11 @@ final class AdsListViewModel {
     let reloadingTrigger = PublishRelay<Void>()
     
     private let service: AdsServiceType
-    private let routeTrigger: AdsRouteTrigger
+    private let routeTrigger: RouteTrigger<AdsRoute>
     
     init(
         service: AdsServiceType = appContext.adsService,
-        routeTrigger: @escaping AdsRouteTrigger
+        routeTrigger: RouteTrigger<AdsRoute>
     ) {
         self.service = service
         ads = AdsListViewModel.createAdsLoader(
@@ -53,7 +53,7 @@ final class AdsListViewModel {
     }
     
     func navigate(to ad: AdsListItemViewModel) {
-        routeTrigger(.details(
+        routeTrigger.trigger(.details(
             id: ad.id,
             title: ad.title,
             ad: ad.ad
