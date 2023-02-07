@@ -8,6 +8,8 @@ enum AdsRoute: Route {
     case list
     /// Ad details.
     case details(id: UUID, title: String? = nil, ad: Ad? = nil)
+    
+    case contact(Contact)
 }
 
 /**
@@ -57,6 +59,20 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             let viewController = AdDetailsViewController(rootView: view)
             viewController.title = title
             return .push(viewController)
+            
+        case .contact(let contact):
+            guard let url = URL(string: contact.link) else {
+                return .none()
+            }
+            return Transition(
+                presentables: [],
+                animationInUse: nil,
+                perform: { _, _, completion in
+                    UIApplication.shared.open(url) { _ in
+                        completion?()
+                    }
+                }
+            )
             
         }
         
