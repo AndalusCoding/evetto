@@ -20,6 +20,14 @@
 		F4B200F82982FD4C00028D1B /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = F4B200F72982FD4C00028D1B /* XCoordinator */; };
 		F4B200FA2982FD4C00028D1B /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = F4B200F92982FD4C00028D1B /* XCoordinatorRx */; };
 		F4B200FC2982FFBF00028D1B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B200FB2982FFBF00028D1B /* MainCoordinator.swift */; };
+		F4C29718298C2EBB008EE1EC /* RouteTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29717298C2EBB008EE1EC /* RouteTrigger.swift */; };
+		F4C29720298C3196008EE1EC /* EvettoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2971F298C3196008EE1EC /* EvettoTests.swift */; };
+		F4C29727298C327A008EE1EC /* AdDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29726298C327A008EE1EC /* AdDetailsViewModelTests.swift */; };
+		F4C29729298C3422008EE1EC /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = F4C29728298C3422008EE1EC /* RxBlocking */; };
+		F4C2972B298C3422008EE1EC /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4C2972A298C3422008EE1EC /* RxCocoa */; };
+		F4C2972D298C3422008EE1EC /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F4C2972C298C3422008EE1EC /* RxRelay */; };
+		F4C2972F298C3422008EE1EC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C2972E298C3422008EE1EC /* RxSwift */; };
+		F4C29731298C3422008EE1EC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = F4C29730298C3422008EE1EC /* RxTest */; };
 		F4E00F962979B837003F5E07 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E00F952979B837003F5E07 /* AdsService.swift */; };
 		F4E00F9A2979B943003F5E07 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E00F992979B943003F5E07 /* ActivityIndicatorCell.swift */; };
 		F4E2D2B7298069BC00F992AC /* AdsListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2D2B6298069BC00F992AC /* AdsListItemViewModel.swift */; };
@@ -42,7 +50,18 @@
 		F4E35D6B2977243300D4D3E5 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6A2977243300D4D3E5 /* RxDataSources */; };
 		F4E35D6E2977292C00D4D3E5 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = F4E35D6D2977292C00D4D3E5 /* Fakery */; };
 		F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECA83A297C6A3000A26125 /* DependencyContainer.swift */; };
+		F4F944ED2989A0CF00554DC3 /* SellerContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F944EC2989A0CF00554DC3 /* SellerContactsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4C29721298C3196008EE1EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4E35D2A29771B5F00D4D3E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4E35D3129771B5F00D4D3E5;
+			remoteInfo = Evetto;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F407503F298596970070EBCE /* NumberFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+.swift"; sourceTree = "<group>"; };
@@ -56,6 +75,11 @@
 		F4B200F22982F51600028D1B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		F4B200F52982FC2100028D1B /* AdsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCoordinator.swift; sourceTree = "<group>"; };
 		F4B200FB2982FFBF00028D1B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		F4C29717298C2EBB008EE1EC /* RouteTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTrigger.swift; sourceTree = "<group>"; };
+		F4C2971D298C3196008EE1EC /* EvettoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvettoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C2971F298C3196008EE1EC /* EvettoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvettoTests.swift; sourceTree = "<group>"; };
+		F4C29726298C327A008EE1EC /* AdDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		F4C29732298C36A7008EE1EC /* Evetto.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Evetto.xctestplan; path = Evetto.xcodeproj/Evetto.xctestplan; sourceTree = "<group>"; };
 		F4E00F952979B837003F5E07 /* AdsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		F4E00F992979B943003F5E07 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		F4E2D2B6298069BC00F992AC /* AdsListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListItemViewModel.swift; sourceTree = "<group>"; };
@@ -73,9 +97,22 @@
 		F4E35D632977218200D4D3E5 /* AdsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListCell.swift; sourceTree = "<group>"; };
 		F4E35D642977218200D4D3E5 /* AdsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsListCell.xib; sourceTree = "<group>"; };
 		F4ECA83A297C6A3000A26125 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		F4F944EC2989A0CF00554DC3 /* SellerContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContactsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F4C2971A298C3196008EE1EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C29731298C3422008EE1EC /* RxTest in Frameworks */,
+				F4C2972D298C3422008EE1EC /* RxRelay in Frameworks */,
+				F4C2972B298C3422008EE1EC /* RxCocoa in Frameworks */,
+				F4C2972F298C3422008EE1EC /* RxSwift in Frameworks */,
+				F4C29729298C3422008EE1EC /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E35D2F29771B5F00D4D3E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,6 +160,15 @@
 			path = "Ad Details";
 			sourceTree = "<group>";
 		};
+		F4C2971E298C3196008EE1EC /* EvettoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4C2971F298C3196008EE1EC /* EvettoTests.swift */,
+				F4C29726298C327A008EE1EC /* AdDetailsViewModelTests.swift */,
+			);
+			path = EvettoTests;
+			sourceTree = "<group>";
+		};
 		F4E00F942979B837003F5E07 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +204,9 @@
 		F4E35D2929771B5F00D4D3E5 = {
 			isa = PBXGroup;
 			children = (
+				F4C29732298C36A7008EE1EC /* Evetto.xctestplan */,
 				F4E35D3429771B5F00D4D3E5 /* Evetto */,
+				F4C2971E298C3196008EE1EC /* EvettoTests */,
 				F4E35D3329771B5F00D4D3E5 /* Products */,
 				F4E2D2BC29806F4200F992AC /* Frameworks */,
 			);
@@ -168,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E35D3229771B5F00D4D3E5 /* Evetto.app */,
+				F4C2971D298C3196008EE1EC /* EvettoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +253,7 @@
 			children = (
 				F4E35D5B29771E8500D4D3E5 /* Ads List */,
 				F4B200E62982EE6C00028D1B /* Ad Details */,
+				F4F944EB2989A0A900554DC3 /* Seller Contacts */,
 				F4B200F52982FC2100028D1B /* AdsCoordinator.swift */,
 			);
 			path = Scenes;
@@ -220,6 +270,7 @@
 		F4E35D4C29771BB700D4D3E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F4C29717298C2EBB008EE1EC /* RouteTrigger.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -265,9 +316,42 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F4F944EB2989A0A900554DC3 /* Seller Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				F4F944EC2989A0CF00554DC3 /* SellerContactsView.swift */,
+			);
+			path = "Seller Contacts";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F4C2971C298C3196008EE1EC /* EvettoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C29723298C3196008EE1EC /* Build configuration list for PBXNativeTarget "EvettoTests" */;
+			buildPhases = (
+				F4C29719298C3196008EE1EC /* Sources */,
+				F4C2971A298C3196008EE1EC /* Frameworks */,
+				F4C2971B298C3196008EE1EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4C29722298C3196008EE1EC /* PBXTargetDependency */,
+			);
+			name = EvettoTests;
+			packageProductDependencies = (
+				F4C29728298C3422008EE1EC /* RxBlocking */,
+				F4C2972A298C3422008EE1EC /* RxCocoa */,
+				F4C2972C298C3422008EE1EC /* RxRelay */,
+				F4C2972E298C3422008EE1EC /* RxSwift */,
+				F4C29730298C3422008EE1EC /* RxTest */,
+			);
+			productName = EvettoTests;
+			productReference = F4C2971D298C3196008EE1EC /* EvettoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F4E35D3129771B5F00D4D3E5 /* Evetto */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E35D4629771B6000D4D3E5 /* Build configuration list for PBXNativeTarget "Evetto" */;
@@ -307,6 +391,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					F4C2971C298C3196008EE1EC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = F4E35D3129771B5F00D4D3E5;
+					};
 					F4E35D3129771B5F00D4D3E5 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -334,11 +422,19 @@
 			projectRoot = "";
 			targets = (
 				F4E35D3129771B5F00D4D3E5 /* Evetto */,
+				F4C2971C298C3196008EE1EC /* EvettoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F4C2971B298C3196008EE1EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E35D3029771B5F00D4D3E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +449,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F4C29719298C3196008EE1EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C29727298C327A008EE1EC /* AdDetailsViewModelTests.swift in Sources */,
+				F4C29720298C3196008EE1EC /* EvettoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E35D2E29771B5F00D4D3E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,8 +476,10 @@
 				F4B200F62982FC2100028D1B /* AdsCoordinator.swift in Sources */,
 				F4B200EF2982F01E00028D1B /* Contact.swift in Sources */,
 				F4E00F962979B837003F5E07 /* AdsService.swift in Sources */,
+				F4F944ED2989A0CF00554DC3 /* SellerContactsView.swift in Sources */,
 				F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */,
 				F4E35D5F29771EBB00D4D3E5 /* AdsListViewModel.swift in Sources */,
+				F4C29718298C2EBB008EE1EC /* RouteTrigger.swift in Sources */,
 				F4B200ED2982EEAE00028D1B /* AdDetailsViewModel.swift in Sources */,
 				F4B200F12982F4CB00028D1B /* AdRecord.swift in Sources */,
 				F4E35D3829771B5F00D4D3E5 /* SceneDelegate.swift in Sources */,
@@ -382,6 +489,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4C29722298C3196008EE1EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4E35D3129771B5F00D4D3E5 /* Evetto */;
+			targetProxy = F4C29721298C3196008EE1EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F4E35D4029771B6000D4D3E5 /* LaunchScreen.storyboard */ = {
@@ -396,6 +511,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F4C29724298C3196008EE1EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = avocoder.EvettoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Evetto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Evetto";
+			};
+			name = Debug;
+		};
+		F4C29725298C3196008EE1EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = avocoder.EvettoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Evetto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Evetto";
+			};
+			name = Release;
+		};
 		F4E35D4429771B6000D4D3E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -532,9 +687,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = avocoder.evetto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -558,15 +716,27 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = avocoder.evetto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F4C29723298C3196008EE1EC /* Build configuration list for PBXNativeTarget "EvettoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C29724298C3196008EE1EC /* Debug */,
+				F4C29725298C3196008EE1EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F4E35D2D29771B5F00D4D3E5 /* Build configuration list for PBXProject "Evetto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -640,6 +810,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B200F42982FBA200028D1B /* XCRemoteSwiftPackageReference "XCoordinator" */;
 			productName = XCoordinatorRx;
+		};
+		F4C29728298C3422008EE1EC /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		F4C2972A298C3422008EE1EC /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F4C2972C298C3422008EE1EC /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		F4C2972E298C3422008EE1EC /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		F4C29730298C3422008EE1EC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E35D4E29771C1D00D4D3E5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
 		};
 		F4E2D2BA29806E8F00F992AC /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
