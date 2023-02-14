@@ -8,6 +8,7 @@ final class AdDetailsViewModel: ObservableObject {
     @Published var imageURLs: [URL] = []
     @Published var title = ""
     @Published var location: String?
+    @Published var coordinate: Coordinate?
     @Published var price = ""
     @Published var category = ""
     @Published var date = ""
@@ -54,6 +55,7 @@ final class AdDetailsViewModel: ObservableObject {
         title = ad.title
         descriptionText = ad.description
         location = ad.location?.area ?? ""
+        coordinate = ad.coordinate
         if let price = ad.price {
             priceNumberFormatter.currencyCode = price.currency.rawValue
             priceNumberFormatter.currencySymbol = price.currency.currencySymbol
@@ -70,6 +72,13 @@ final class AdDetailsViewModel: ObservableObject {
     
     func contactSeller(_ contact: Contact) {
         routeTrigger.trigger(.contact(contact))
+    }
+    
+    func navigateToMapView() {
+        guard let coordinate else {
+            return
+        }
+        routeTrigger.trigger(.mapView(coordinate))
     }
     
     func toggleFavoriteState() {

@@ -10,6 +10,8 @@ enum AdsRoute: Route {
     case details(id: UUID, title: String? = nil, ad: Ad? = nil)
     
     case contact(Contact)
+    
+    case mapView(Coordinate)
 }
 
 /**
@@ -76,6 +78,12 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
                     }
                 }
             )
+            
+        case .mapView(let coordinate):
+            let viewModel = MapViewModel(coordinate: coordinate)
+            let view = MapView(viewModel: viewModel)
+            let viewController = UIHostingController(rootView: view)
+            return .push(viewController)
             
         }
         

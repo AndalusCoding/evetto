@@ -59,6 +59,20 @@ struct AdDetailsView: View {
                 descriptionText(text)
             }
             
+            if let coordinate = viewModel.coordinate {
+                Button(action: viewModel.navigateToMapView) {
+                    MapView(
+                        viewModel: .init(coordinate: coordinate),
+                        showLocateUserButton: false
+                    )
+                    .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
+                    .disabled(true)
+                }
+            }
+            
+            
             Button("Связаться") {
                 withAnimation {
                     presentContactsList.toggle()

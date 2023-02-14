@@ -1,4 +1,5 @@
 import Foundation
+import CoreLocation
 
 public struct AdResponse: Decodable, Identifiable, Hashable {
     
@@ -73,6 +74,7 @@ public struct AdResponse: Decodable, Identifiable, Hashable {
     public let updatedAt: Date
     public let price: AdPrice?
     public let location: LocationInfo?
+    public let coordinate: Coordinate?
     public var previewImageURL: URL?
     public var isFavorite: Bool?
 
@@ -112,6 +114,7 @@ public struct AdResponse: Decodable, Identifiable, Hashable {
                 area: "Стамбул",
                 district: "Фатих"
             ),
+            coordinate: Coordinate(latitude: 41, longitude: 28.9),
             previewImageURL: imageURL,
             onboardingLink: nil,
             isOnboarding: Bool.random(),

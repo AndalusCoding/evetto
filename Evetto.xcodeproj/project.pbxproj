@@ -10,6 +10,10 @@
 		F4075040298596970070EBCE /* NumberFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F407503F298596970070EBCE /* NumberFormatter+.swift */; };
 		F40750422985998E0070EBCE /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40750412985998E0070EBCE /* DateFormatter+.swift */; };
 		F407504529859B400070EBCE /* PrimaryActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F407504429859B400070EBCE /* PrimaryActionButtonStyle.swift */; };
+		F42D4D4E299C1B2E007CC34B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D4D4D299C1B2E007CC34B /* MapView.swift */; };
+		F42D4D50299C1B91007CC34B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D4D4F299C1B91007CC34B /* MapViewModel.swift */; };
+		F42D4D52299C1C4F007CC34B /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D4D51299C1C4F007CC34B /* Coordinate.swift */; };
+		F4628C0D2992D07A00F817A0 /* LoadingOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4628C0C2992D07A00F817A0 /* LoadingOverlayModifier.swift */; };
 		F4B200E92982EE9D00028D1B /* AdDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B200E82982EE9D00028D1B /* AdDetailsViewController.swift */; };
 		F4B200EB2982EEA700028D1B /* AdDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B200EA2982EEA700028D1B /* AdDetailsView.swift */; };
 		F4B200ED2982EEAE00028D1B /* AdDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B200EC2982EEAE00028D1B /* AdDetailsViewModel.swift */; };
@@ -67,6 +71,10 @@
 		F407503F298596970070EBCE /* NumberFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+.swift"; sourceTree = "<group>"; };
 		F40750412985998E0070EBCE /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		F407504429859B400070EBCE /* PrimaryActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryActionButtonStyle.swift; sourceTree = "<group>"; };
+		F42D4D4D299C1B2E007CC34B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F42D4D4F299C1B91007CC34B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F42D4D51299C1C4F007CC34B /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		F4628C0C2992D07A00F817A0 /* LoadingOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayModifier.swift; sourceTree = "<group>"; };
 		F4B200E82982EE9D00028D1B /* AdDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailsViewController.swift; sourceTree = "<group>"; };
 		F4B200EA2982EEA700028D1B /* AdDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailsView.swift; sourceTree = "<group>"; };
 		F4B200EC2982EEAE00028D1B /* AdDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -148,6 +156,23 @@
 				F407504429859B400070EBCE /* PrimaryActionButtonStyle.swift */,
 			);
 			path = "SwiftUI View Modifiers";
+			sourceTree = "<group>";
+		};
+		F42D4D4C299C1B1F007CC34B /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				F42D4D4F299C1B91007CC34B /* MapViewModel.swift */,
+				F42D4D4D299C1B2E007CC34B /* MapView.swift */,
+			);
+			path = "Map View";
+			sourceTree = "<group>";
+		};
+		F4628C0B2992D05F00F817A0 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				F4628C0C2992D07A00F817A0 /* LoadingOverlayModifier.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		F4B200E62982EE6C00028D1B /* Ad Details */ = {
@@ -251,6 +276,7 @@
 		F4E35D4A29771BA600D4D3E5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F42D4D4C299C1B1F007CC34B /* Map View */,
 				F4E35D5B29771E8500D4D3E5 /* Ads List */,
 				F4B200E62982EE6C00028D1B /* Ad Details */,
 				F4F944EB2989A0A900554DC3 /* Seller Contacts */,
@@ -262,6 +288,7 @@
 		F4E35D4B29771BB400D4D3E5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F4628C0B2992D05F00F817A0 /* SwiftUI */,
 				F407503E2985968C0070EBCE /* Foundation */,
 			);
 			path = Extensions;
@@ -291,6 +318,7 @@
 				F4B200EE2982F01E00028D1B /* Contact.swift */,
 				F4B200F02982F4CB00028D1B /* AdRecord.swift */,
 				F4B200F22982F51600028D1B /* Currency.swift */,
+				F42D4D51299C1C4F007CC34B /* Coordinate.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -474,10 +502,14 @@
 				F4E2D2B7298069BC00F992AC /* AdsListItemViewModel.swift in Sources */,
 				F4B200FC2982FFBF00028D1B /* MainCoordinator.swift in Sources */,
 				F4B200F62982FC2100028D1B /* AdsCoordinator.swift in Sources */,
+				F42D4D4E299C1B2E007CC34B /* MapView.swift in Sources */,
 				F4B200EF2982F01E00028D1B /* Contact.swift in Sources */,
+				F42D4D52299C1C4F007CC34B /* Coordinate.swift in Sources */,
 				F4E00F962979B837003F5E07 /* AdsService.swift in Sources */,
 				F4F944ED2989A0CF00554DC3 /* SellerContactsView.swift in Sources */,
 				F4ECA83B297C6A3000A26125 /* DependencyContainer.swift in Sources */,
+				F42D4D50299C1B91007CC34B /* MapViewModel.swift in Sources */,
+				F4628C0D2992D07A00F817A0 /* LoadingOverlayModifier.swift in Sources */,
 				F4E35D5F29771EBB00D4D3E5 /* AdsListViewModel.swift in Sources */,
 				F4C29718298C2EBB008EE1EC /* RouteTrigger.swift in Sources */,
 				F4B200ED2982EEAE00028D1B /* AdDetailsViewModel.swift in Sources */,
