@@ -12,7 +12,9 @@ private enum Constants {
 final class AdsListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-        
+    
+    private let searchController = UISearchController()
+    
     typealias ViewModel = AdsListViewModel
     
     let viewModel: ViewModel
@@ -57,6 +59,42 @@ private extension AdsListViewController {
     
     func configureViews() {
         configureCollectionView()
+        configureSearchBar()
+        configureNavigationBar()
+    }
+    
+    func configureSearchBar() {
+        navigationItem.searchController = searchController
+        searchController
+            .searchBar
+            .rx.text
+            .map { $0?.isEmpty == true ? nil : $0 }
+            .skip(1)
+            .bind(to: viewModel.searchText)
+            .disposed(by: disposeBag)
+    }
+    
+    func configureNavigationBar() {
+        let menuButton = UIBarButtonItem(
+            title: nil,
+            image: UIImage(systemName: "line.3.horizontal.decrease"),
+            primaryAction: nil,
+            menu: createSortingMenu()
+        )
+        navigationItem.rightBarButtonItem = menuButton
+    }
+    
+    func createSortingMenu() -> UIMenu {
+        let menu = UIMenu(
+            title: "Сортировка",
+            options: .singleSelection,
+            children: AdsSorting.Sort.allCases.map { type in
+                UIAction(title: type.title, handler: { [unowned self] _ in
+                    viewModel.sorting.accept(type)
+                })
+            }
+        )
+        return menu
     }
     
     func configureCollectionView() {

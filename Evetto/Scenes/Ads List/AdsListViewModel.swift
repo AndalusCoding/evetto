@@ -35,6 +35,8 @@ final class AdsListViewModel {
     let ads: Driver<[AdsSection]>
     let nextPageTrigger = PublishRelay<Void>()
     let reloadingTrigger = PublishRelay<Void>()
+    let searchText = PublishRelay<String?>()
+    let sorting = PublishRelay<AdsSorting.Sort?>()
     
     private let service: AdsServiceType
     private let routeTrigger: RouteTrigger<AdsRoute>
@@ -44,10 +46,19 @@ final class AdsListViewModel {
         routeTrigger: RouteTrigger<AdsRoute>
     ) {
         self.service = service
+        
+        let searchText = searchText
+            .asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .share(replay: 1, scope: .forever)
+        
         ads = AdsListViewModel.createAdsLoader(
             service: service,
             nextPageTrigger: nextPageTrigger.asObservable(),
-            reloadTrigger: reloadingTrigger.asObservable()
+            reloadTrigger: reloadingTrigger.asObservable(),
+            searchText: searchText,
+            sorting: sorting.asObservable().distinctUntilChanged()
         )
         self.routeTrigger = routeTrigger
     }
@@ -63,7 +74,9 @@ final class AdsListViewModel {
     static func createAdsLoader(
         service: AdsServiceType,
         nextPageTrigger: Observable<Void>,
-        reloadTrigger: Observable<Void>
+        reloadTrigger: Observable<Void>,
+        searchText: Observable<String?>,
+        sorting: Observable<AdsSorting.Sort?>
     ) -> Driver<[AdsSection]> {
         var page = 0
         
@@ -73,10 +86,27 @@ final class AdsListViewModel {
         return Observable
             .merge(
                 nextPageTrigger.do(onNext: { page += 1 }),
-                reloadTrigger.do(onNext: { page = 1 })
+                Observable
+                    .merge(
+                        reloadTrigger,
+                        searchText.map { _ in },
+                        sorting.map { _ in }
+                    )
+                    .do(onNext: { page = 1 })
             )
-            .flatMap { () -> Single<[Ad]> in
-                service.getAdsList(page: page, limit: PAGE_LIMIT)
+            .withLatestFrom(
+                Observable.combineLatest(
+                    searchText.startWith(nil),
+                    sorting.startWith(nil)
+                )
+            )
+            .flatMap { (text, sorting) -> Single<[Ad]> in
+                service.getAdsList(
+                    page: page,
+                    limit: PAGE_LIMIT,
+                    text: text,
+                    sort: sorting.flatMap { AdsSorting(sort: $0, sortAscending: false) }
+                )
             }
             .startWith([])
             .map { ads -> [AdsSection] in

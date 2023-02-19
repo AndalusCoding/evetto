@@ -2,10 +2,29 @@ import Foundation
 import RxSwift
 import Fakery
 
+struct AdsSorting: Hashable {
+    enum Sort: String, Hashable, CaseIterable {
+        case createdAt, updatedAt, price
+        
+        var title: String {
+            switch self {
+            case .createdAt: return "Дата создания"
+            case .updatedAt: return "Дата изменения"
+            case .price: return "Цена"
+            }
+        }
+    }
+    
+    let sort: Sort
+    let sortAscending: Bool
+}
+
 protocol AdsServiceType {
     func getAdsList(
         page: Int,
-        limit: Int
+        limit: Int,
+        text: String?,
+        sort: AdsSorting?
     ) -> Single<[Ad]>
     
     func getAdDetails(_ id: UUID) -> Single<Ad>
@@ -15,14 +34,45 @@ protocol AdsServiceType {
 
 final class AdsService: AdsServiceType {
     
+    let baseURL = URL(string: "https://api.evetto.app/v1/ads/")!
+    
     func getAdsList(
         page: Int,
-        limit: Int
+        limit: Int,
+        text: String?,
+        sort: AdsSorting?
     ) -> Single<[Ad]> {
         assert(Thread.isMainThread)
-        let request = URLRequest(
-            url: URL(string: "https://api.evetto.app/v1/ads?page=\(page)&per=\(limit)")!
-        )
+        var urlQueryItems: [URLQueryItem] = [
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "per", value: "\(limit)"),
+        ]
+        
+        if let text {
+            urlQueryItems.append(URLQueryItem(name: "text", value: text))
+        }
+        
+        if let sort {
+            urlQueryItems.append(contentsOf: [
+                URLQueryItem(name: "sort", value: sort.sort.rawValue),
+                URLQueryItem(name: "sortAscending", value: "\(sort.sortAscending)"),
+            ])
+        }
+        
+        guard var urlComponents = URLComponents(
+            url: baseURL,
+            resolvingAgainstBaseURL: true
+        ) else {
+            fatalError()
+        }
+        
+        urlComponents.queryItems = urlQueryItems
+        
+        guard let url = urlComponents.url else {
+            fatalError()
+        }
+        
+        let request = URLRequest(url: url)
         
         struct Response: Decodable {
             let data: [Ad]
